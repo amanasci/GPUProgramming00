@@ -1,0 +1,1 @@
+1. What will happen if the CPU and GPU share memory and we try accessing a global CPU variable from the GPU code? 
