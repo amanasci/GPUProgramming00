@@ -1,9 +1,9 @@
 # Important Points:
 
 ## Order: 
-1. hello . cu
-2. fun . cu
-3. threadId . cu
+      1. hello . cu
+      2. fun . cu
+      3. threadId . cu
 
 ## hello . cu: 
 1. `dkernel` is just a random name for the kernel, we can use any name as our desire.

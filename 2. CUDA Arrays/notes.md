@@ -3,7 +3,9 @@
 ## Order:
     1. arrayfun . cu
     2. arrayfun2 . cu
-    3. 
+    3. arrayfun3 . cu
+    4. accessing . cu
+    5. 2Darrayfun . cu
 
 
 ## arrayfun . cu 
@@ -27,3 +29,10 @@
     1. 1-5 blocks per SM (Streaming Multiprocessor)
     2. 128-1024 threads per block.
     3. Total 2k - 100k threads.
+
+
+## 2Darrayfun . cu:
+1. `define N 5` sets constant N equals to 5. Likewise `define M 6` sets M equal to 6. So when grid is created using `dim3 block(N,M,1)` it defines a 3D block with N columns and M rows with 1 in depth i.e `threadIdx.x == N`. `.y == M` and `.z ==1`.
+2. `hmatrix` is matrix in CPU's memory whereas `matrix` is matrix in GPU's memory.
+3. Basically id = xindex(row) * width + yindex(column). Used to get indices of a matrix in the form an array.
+4.  **Explanation of loop** : ii loop goes for the x axis of the matrix (Row). jj loop goes for the y axis of the matrix, i.e (Column). So it goes like, for every row, go through all the members of the column and print them.
