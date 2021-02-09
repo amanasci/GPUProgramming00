@@ -19,6 +19,7 @@
 ## arrayfun . cu
 1. Everything is ok until N = 1024. 
 2. At N = 1025. Output is unexpected and is a string of zeroes.
+3. Here `fun<<1,N>>()` 1 is number of blocks and N is number of threads in one block.
 
 ## Thread Organization:
 1. Kernel is always launched as grid of threads.
@@ -27,7 +28,7 @@
 4. This specific organisation makes working with Image Processing tasks and Solving PDEs on volumes easier.
     ### Typical configuration: 
     1. 1-5 blocks per SM (Streaming Multiprocessor)
-    2. 128-1024 threads per block.
+    2. 128-1024 threads per block. 1024 is the limit of threads per thread block.
     3. Total 2k - 100k threads.
 
 
