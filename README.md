@@ -14,6 +14,7 @@ To try out:
 > nvcc filename.cu 
 
 
+### Thanks to Rupesh Nasre, IIT Madras for FAQ. 
 
 ## Note
 > If anyone finds any mistake please feel free to point it out. And also try helping me solve doubts in Doubts.md [I know most of them are noob-like doubts.]
