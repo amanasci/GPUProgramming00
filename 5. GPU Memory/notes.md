@@ -42,3 +42,18 @@
    1. Processor should have data available in no time.
    2. In practice, memory I/O becomes bottleneck.
 3. Latency hiding on GPUs is done by exploiting massive multi threading. While data is being loaded, use different warp to save time.
+
+
+### Locality 
+1. It is important in GPU's also. 
+2. Types: Spatial , Temporal
+3. Spatial: If `a[i]` is accessed, `a[i+k]` is also accessed.
+4. Temporal: If `a[i]` is accessed now it'll again be accessed soon.
+
+### Memory Coalescing
+1. If warp threads access words from the same block of 32 words, their memeory requests are club into one. 
+2. That is memory requests are `coalesced`.
+3. Without coalescing, each `load/store` instruction would require one memory cycle. Too much time will be needed.
+
+### Degree of Coalescing
+1. DoC is the `inverse (33 - {} )` of the number of memory transactions required for a warp to execute an instruction.
