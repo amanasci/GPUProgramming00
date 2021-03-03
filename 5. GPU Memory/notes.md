@@ -57,3 +57,18 @@
 
 ### Degree of Coalescing
 1. DoC is the `inverse (33 - {} )` of the number of memory transactions required for a warp to execute an instruction.
+
+### Shared Memory
+1. Programmable L1 cache / scratchpad memory.
+2. Accessible only in thread block.
+3. Useful for repoeated small data or coordination.
+4.  ```__shared__ float a[N];```, ```__shared__ unsigned s;``` this how we init memory in shared memory.
+5.  ```__syncthreads()``` is the barrier. It makes kernel wait for a thread to execute in a thread block.
+
+
+### sharedmem . cu and sharedmembarrier . cu
+1. There is difference in the two codes. In first we can get output as either 3 or 1 as the `threadIdx.x = 0`, `1` are in different warp than `10`. So They are not in sync. 
+2. While in second we are using barrier to force the sequentiality between different warps. So output is always 3.
+3. Do we need all `__synthreads()` used in code? Not really. We don't really need first `__syncthreads()` but we need second and third. 
+4. Why second? Third is understandable. Second is needed as if there is no sync then there's chance that both the if conditions above and below second one will execute at same time which might not really be a good thing for us. 
+5. Cost of ```__syncthreads()``` is not high.
