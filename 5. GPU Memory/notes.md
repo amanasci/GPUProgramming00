@@ -72,3 +72,21 @@
 3. Do we need all `__synthreads()` used in code? Not really. We don't really need first `__syncthreads()` but we need second and third. 
 4. Why second? Third is understandable. Second is needed as if there is no sync then there's chance that both the if conditions above and below second one will execute at same time which might not really be a good thing for us. 
 5. Cost of ```__syncthreads()``` is not high.
+
+### Dynamic Shared Memory
+1. When the amount of shared memory required is unknown at compile time, dynamic shared can be used. 
+2. This is specified as the `third` parameter of kernel launch.
+3. `extern __shared__ int s[];` inside kernel we do this.
+
+### Bank Conflicts
+1. Shared memory is organized into banks. 
+2. Accesses to the bank are sequential.
+3. Consecutive words are stored in adjacent banks.
+4. Warp accesses to the same word are not sequentialized.
+
+### Texture Memory
+1. Fast read-only memory
+2. Optimized for 2D spatial access
+3. Definition: ```texture<float, 2, cudaReadModeElementType> tex;```
+4. In main: ```cudaBindTextureToArray(tex, cuArray);```
+5. In kernel:``` = tex2D(tex);```
